@@ -1,0 +1,317 @@
+:root {
+  --bg-top: #fff6fa;
+  --bg-mid: #ffeaf3;
+  --bg-bottom: #ffe2ef;
+  --text-color: #702344;
+  --yes-color: #b82a5d;
+  --yes-color-dark: #971f4a;
+  --no-color: #f5c7d9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(160deg, var(--bg-top), var(--bg-mid), var(--bg-bottom));
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+.scene {
+  width: min(980px, 94vw);
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.title {
+  margin: 0 0 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  letter-spacing: 0.02em;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeRise 1.4s ease forwards 0.2s;
+}
+
+.garden {
+  width: min(820px, 92vw);
+  filter: drop-shadow(0 12px 20px rgba(141, 42, 79, 0.15));
+}
+
+.garden-svg {
+  width: 100%;
+  height: auto;
+}
+
+.stem {
+  fill: none;
+  stroke: #4f7f58;
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  animation: drawStem 4.5s ease forwards;
+}
+
+.leaf {
+  fill: url(#leafTone);
+  opacity: 0;
+  transform-origin: center;
+  transform: scale(0.5);
+  animation: bloomLeaf 2.8s ease forwards;
+}
+
+.rose .petal {
+  fill: url(#rosePetal);
+  opacity: 0;
+  transform-origin: center;
+  transform: scale(0.2);
+  animation: bloomRose 2.4s cubic-bezier(0.21, 0.75, 0.31, 1) forwards;
+}
+
+.rose .petal-core {
+  fill: #c7356a;
+}
+
+.gypsophila circle {
+  fill: #fff;
+  stroke: #d7d1dc;
+  stroke-width: 1;
+  opacity: 0;
+  transform-origin: center;
+  animation: bloomGypsophila 1.6s ease forwards;
+}
+
+.heart path {
+  fill: #de517f;
+  opacity: 0;
+  transform-origin: center;
+  animation: pulseIn 1.8s ease forwards;
+}
+
+.stem-left .leaf:nth-of-type(2),
+.stem-right .leaf:nth-of-type(2) {
+  animation-delay: 1.4s;
+}
+
+.stem-left .rose .petal,
+.stem-right .rose .petal {
+  animation-delay: 2.2s;
+}
+
+.stem-left .gypsophila circle,
+.stem-right .gypsophila circle {
+  animation-delay: 2.9s;
+}
+
+.heart-main path {
+  animation-delay: 2.5s;
+}
+
+.heart-small path {
+  animation-delay: 3s;
+}
+
+.heart-small-alt path {
+  animation-delay: 3.2s;
+}
+
+.intro.finished {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.question-area {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  width: 100%;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.actions.final {
+  margin-top: 65vh;
+}
+
+.btn {
+  border: 0;
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.45s ease, background-color 0.45s ease, opacity 0.45s ease;
+}
+
+.btn.yes {
+  color: #fff;
+  background: linear-gradient(135deg, var(--yes-color), var(--yes-color-dark));
+  box-shadow: 0 10px 18px rgba(130, 27, 70, 0.25);
+}
+
+.btn.no {
+  color: #6d2845;
+  background: var(--no-color);
+}
+
+.message {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-weight: 700;
+  padding-inline: 1rem;
+}
+
+.message.show {
+  animation: fadePulse 3s ease-in-out infinite;
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.rose-burst {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  animation: roseBurst 2.8s ease forwards;
+}
+
+.rose-burst svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes drawStem {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bloomLeaf {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-10deg);
+  }
+  100% {
+    opacity: 0.95;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes bloomRose {
+  0% {
+    opacity: 0;
+    transform: scale(0.05);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bloomGypsophila {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  80% {
+    opacity: 0.95;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.88;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadePulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes roseBurst {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.4);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .actions.final {
+    margin-top: 68vh;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.4rem;
+  }
+}

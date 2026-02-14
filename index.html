@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi San Valentín</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="scene" aria-live="polite">
+      <section id="intro" class="intro">
+        <h1 class="title">¿Quieres ser mi San Valentín?</h1>
+
+        <div class="garden" aria-hidden="true">
+          <svg viewBox="0 0 800 520" class="garden-svg" role="img">
+            <defs>
+              <linearGradient id="rosePetal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f6a0bb" />
+                <stop offset="100%" stop-color="#d94d7a" />
+              </linearGradient>
+              <linearGradient id="leafTone" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#9dc5a0" />
+                <stop offset="100%" stop-color="#4a7b54" />
+              </linearGradient>
+            </defs>
+
+            <g class="stem-group stem-left">
+              <path class="stem" d="M190 450 C170 380 185 300 210 230" />
+              <path class="leaf" d="M185 340 C140 320 150 290 195 305" />
+              <path class="leaf" d="M200 275 C250 260 255 220 215 230" />
+              <g class="rose">
+                <circle class="petal petal-core" cx="212" cy="210" r="22" />
+                <circle class="petal" cx="195" cy="205" r="16" />
+                <circle class="petal" cx="228" cy="205" r="16" />
+                <circle class="petal" cx="212" cy="190" r="16" />
+                <circle class="petal" cx="212" cy="223" r="16" />
+              </g>
+              <g class="gypsophila">
+                <circle cx="155" cy="240" r="7" />
+                <circle cx="140" cy="255" r="6" />
+                <circle cx="168" cy="260" r="5" />
+                <circle cx="150" cy="275" r="5" />
+              </g>
+            </g>
+
+            <g class="stem-group stem-right">
+              <path class="stem" d="M610 450 C635 380 620 290 585 220" />
+              <path class="leaf" d="M620 340 C670 325 670 290 620 302" />
+              <path class="leaf" d="M605 280 C560 260 565 225 600 242" />
+              <g class="rose">
+                <circle class="petal petal-core" cx="583" cy="202" r="22" />
+                <circle class="petal" cx="566" cy="198" r="16" />
+                <circle class="petal" cx="600" cy="198" r="16" />
+                <circle class="petal" cx="583" cy="185" r="16" />
+                <circle class="petal" cx="583" cy="216" r="16" />
+              </g>
+              <g class="gypsophila">
+                <circle cx="640" cy="240" r="7" />
+                <circle cx="655" cy="258" r="6" />
+                <circle cx="630" cy="265" r="5" />
+                <circle cx="650" cy="282" r="5" />
+              </g>
+            </g>
+
+            <g class="heart heart-main">
+              <path d="M400 250 C400 220 360 200 340 235 C320 270 340 295 400 350 C460 295 480 270 460 235 C440 200 400 220 400 250Z" />
+            </g>
+            <g class="heart heart-small">
+              <path d="M335 315 C335 298 315 288 305 306 C295 325 304 339 335 365 C366 339 375 325 365 306 C355 288 335 298 335 315Z" />
+            </g>
+            <g class="heart heart-small-alt">
+              <path d="M465 315 C465 298 445 288 435 306 C425 325 434 339 465 365 C496 339 505 325 495 306 C485 288 465 298 465 315Z" />
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section id="question-area" class="question-area hidden">
+        <div id="message" class="message hidden">No me importa, Serás mi San Valentín 💘</div>
+        <div id="actions" class="actions">
+          <button id="yesBtn" class="btn yes">Sí</button>
+          <button id="noBtn" class="btn no">No</button>
+        </div>
+      </section>
+
+      <canvas id="confetti" class="confetti hidden" aria-hidden="true"></canvas>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
